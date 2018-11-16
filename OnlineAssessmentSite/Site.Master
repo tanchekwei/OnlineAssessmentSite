@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="OnlineAssessmentSite.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <style>
+        html {
+            margin: 0 auto;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        .column {
+            float: left;
+            padding: 10px;
+            height: auto;
+            display: inline;
+        }
+
+        .wrapper:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .left {
+            width: 20%;
+        }
+
+        .right {
+            width: 75%;
+            overflow: hidden;
+        }
+
+        .topcorner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <form id="form1" runat="server">
+
+            <div class="topcorner">
+                <asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome, {0}" />
+                &nbsp;
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Default.aspx" />
+            </div>
+
+
+            <div id="header" style="background-color: antiquewhite">
+                <h2>Online Assessment Site</h2>
+                <p>
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                    </asp:SiteMapPath>
+                </p>
+            </div>
+
+            <div id="navigation" class="column left" style="background-color: bisque">
+                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1">
+                </asp:TreeView>
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            </div>
+
+            <div id="content" class="column right" style="background-color: blanchedalmond">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <!-- Page-specific content will go here... -->
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

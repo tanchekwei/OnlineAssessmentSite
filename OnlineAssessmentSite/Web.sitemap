@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Default.aspx" title="Homepage"  description="Homepage" roles="*">
+    <siteMapNode url="~/Register.aspx" title="Register"  description="Register" />
+    <siteMapNode url="~/Login.aspx" title="Login"  description="Login" />
+
+    <siteMapNode title="Lecturer" description="Lecturer" roles="*">
+      <siteMapNode url="~/Lecturer/CreateNewAssessment.aspx" title="Create New Assessment"  description="Create New Assessment" />
+      <siteMapNode url="~/Lecturer/EditQuestion.aspx" title="Edit Question"  description="Edit Question" />
+      <siteMapNode url="~/Lecturer/LecturerMenu.aspx" title="Lecturer Menu"  description="Lecturer Menu" />
+      <siteMapNode url="~/Lecturer/MaintainAssessment.aspx" title="Maintain Assessment"  description="Maintain Assessment" />
+      <siteMapNode url="~/Lecturer/CreateNewClass.aspx" title="Create New Class"  description="Create New Class" />
+      <siteMapNode url="~/Lecturer/MaintainClass.aspx" title="Maintain Class"  description="Maintain Class" />
+    </siteMapNode>
+    
+    <siteMapNode title="Student" description="Student" roles="*">
+      <siteMapNode url="~/Student/ViewAssessment.aspx" title="View Assessment"  description="View Assessment" />
+      <siteMapNode url="~/Student/JoinClass.aspx" title="Join Class"  description="Join Class" />
+      <!--<siteMapNode url="~/Student/LecturerMenu.aspx" title="Lecturer Menu"  description="Lecturer Menu" />-->
+      <!--<siteMapNode url="~/Student/MaintainAssessment.aspx" title="Maintain Assessment"  description="Maintain Assessment" />-->
+    </siteMapNode>
+      
+    <siteMapNode title="Admin" description="Admin" roles="*">
+      <siteMapNode url="~/Admin/ManageRoles.aspx" title="Manage Roles"  description="Manage Roles" />
+      <siteMapNode url="~/Admin/ManageUsers.aspx" title="Manage Users"  description="Manage Users" />
+      <siteMapNode url="~/Admin/AssignRoles.aspx" title="Assign Roles"  description="Assign Roles" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
