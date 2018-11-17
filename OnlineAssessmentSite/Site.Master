@@ -31,7 +31,7 @@
 
         .right {
             width: 75%;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .topcorner {

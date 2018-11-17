@@ -22,6 +22,15 @@ namespace OnlineAssessmentSite.Student {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
+        /// plhBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plhBtn;
+        
+        /// <summary>
         /// plh control.
         /// </summary>
         /// <remarks>
@@ -29,23 +38,5 @@ namespace OnlineAssessmentSite.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plh;
-        
-        /// <summary>
-        /// tblQuestion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblQuestion;
-        
-        /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }
