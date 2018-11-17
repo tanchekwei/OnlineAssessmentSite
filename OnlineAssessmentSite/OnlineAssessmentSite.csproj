@@ -87,6 +87,7 @@
     <Content Include="Lecturer\LecturerMenu.aspx" />
     <Content Include="Lecturer\MaintainAssessment.aspx" />
     <Content Include="Lecturer\MaintainClass.aspx" />
+    <Content Include="Lecturer\MaintainCollaboration.aspx" />
     <Content Include="Lecturer\MaintainPermission.aspx" />
     <Content Include="Lecturer\MaintainQuestion.aspx" />
     <Content Include="Login.aspx" />
@@ -179,6 +180,13 @@
     </Compile>
     <Compile Include="Lecturer\MaintainClass.aspx.designer.cs">
       <DependentUpon>MaintainClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturer\MaintainCollaboration.aspx.cs">
+      <DependentUpon>MaintainCollaboration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lecturer\MaintainCollaboration.aspx.designer.cs">
+      <DependentUpon>MaintainCollaboration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Lecturer\MaintainPermission.aspx.cs">
       <DependentUpon>MaintainPermission.aspx</DependentUpon>
