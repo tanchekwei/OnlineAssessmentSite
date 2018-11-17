@@ -44,7 +44,7 @@
                             Attempt: 
                         </asp:TableCell><asp:TableCell>
                             <asp:Label ID="Label3" runat="server" Text='<%# Eval("assessmentAttempt") %>' />
-                            &nbsp; (<asp:Label ID="Label4" runat="server" Text='<%# Eval("assessmentAttempt") %>' />
+                            &nbsp; (<asp:Label ID="Label4" runat="server" Text='<%# Eval("AttemptLeft") %>' />
                             lefts) 
                         </asp:TableCell></asp:TableRow><asp:TableRow>
                         <asp:TableCell HorizontalAlign="Right">
@@ -59,13 +59,13 @@
         </asp:DataList>
     </p>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT a.assessmentID, a.assessmentName, a.assessmentDuration, a.assessmentType, a.assessmentVisibility, a.assessmentStartDate, a.assessmentEndDate, a.assessmentAttempt, 
-  (
+(
     SELECT (a.assessmentAttempt - ISNULL(COUNT(*), 0))
-    FROM Attempts at, Assessments a
-    WHERE at.assessmentID = a.assessmentID AND
-                  at.UserId = @UserId
-    GROUP BY a.assessmentAttempt
-  ) AS AttemptLeft, c.className, c.classType 
+    FROM Attempts
+    WHERE Attempts.UserId = @UserId AND
+  Attempts.assessmentID = a.assessmentID
+  ) AS AttemptLeft,
+ c.className, c.classType 
 FROM 
 Assessments AS a, Classes c, Collaborations co, aspnet_Users au
 WHERE a.assessmentID = co.assessmentID AND 
@@ -73,8 +73,7 @@ WHERE a.assessmentID = co.assessmentID AND
   au.UserId = c.UserId AND 
   (a.assessmentVisibility = @assessmentVisibility) AND 
   a.assessmentEndDate &gt;= GETDATE()"><SelectParameters>
-            <asp:Parameter Name="UserId" />
-            <asp:Parameter DefaultValue="Public" Name="assessmentVisibility" Type="String" />
+            <asp:Parameter Name="UserId" /><asp:Parameter DefaultValue="Public" Name="assessmentVisibility" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
 
@@ -117,7 +116,7 @@ WHERE a.assessmentID = co.assessmentID AND
                             Attempt: 
                         </asp:TableCell><asp:TableCell>
                             <asp:Label ID="Label3" runat="server" Text='<%# Eval("assessmentAttempt") %>' />
-                            &nbsp; (<asp:Label ID="Label4" runat="server" Text='<%# Eval("assessmentAttempt") %>' />
+                            &nbsp; (<asp:Label ID="Label4" runat="server" Text='<%# Eval("AttemptLeft") %>' />
                             lefts) 
                         </asp:TableCell></asp:TableRow><asp:TableRow>
                         <asp:TableCell HorizontalAlign="Right">
@@ -130,14 +129,13 @@ WHERE a.assessmentID = co.assessmentID AND
                             <asp:Button ID="btnTakeAssessment" runat="server" Text="Take Assessment" CommandName="Take" CommandArgument='<%# Eval("assessmentID") %>' />
                         </asp:TableCell></asp:TableRow></asp:Table><br /></ItemTemplate><SelectedItemStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
         </asp:DataList><asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT a.*,
-
 (
     SELECT (a.assessmentAttempt - ISNULL(COUNT(*), 0))
-    FROM Attempts at, Assessments a
-    WHERE at.assessmentID = a.assessmentID AND
-                  at.UserId = @UserId
-    GROUP BY a.assessmentAttempt
-  ) AS AttemptLeft, c.className, c.classType
+    FROM Attempts
+    WHERE Attempts.UserId = @UserId AND
+  Attempts.assessmentID = a.assessmentID
+  ) AS AttemptLeft,
+ c.className, c.classType
 
 FROM Assessments a, Permissions p, Classes c, Enrollments e
 WHERE a.assessmentID = p.assessmentID AND
@@ -145,13 +143,13 @@ WHERE a.assessmentID = p.assessmentID AND
  c.classID = e.classID AND
  a.assessmentVisibility = @assessmentVisibility AND
  e.UserId = @UserId AND 
-  a.assessmentEndDate &gt;= GETDATE()">
-            <SelectParameters>
+  a.assessmentEndDate &gt;= GETDATE()"><SelectParameters>
                 <asp:Parameter DefaultValue="" Name="UserId" />
-                <asp:Parameter DefaultValue="Private" Name="assessmentVisibility" />
-            </SelectParameters>
+            <asp:Parameter DefaultValue="Private" Name="assessmentVisibility" />
+                </SelectParameters>
         </asp:SqlDataSource>
     </p>
+    
     <h3>Expired Assessment</h3><asp:DataList ID="DataList3" runat="server" DataSourceID="SqlDataSource3" DataKeyField="assessmentID" CellPadding="4" ForeColor="#333333">
         <AlternatingItemStyle BackColor="White" />
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -206,7 +204,8 @@ WHERE a.assessmentID = co.assessmentID AND
   au.UserId = c.UserId AND 
  c.classID = e.classID AND
  e.UserId = @UserId AND 
-  a.assessmentEndDate &lt; GETDATE()"><SelectParameters>
+  a.assessmentEndDate &lt; GETDATE()">
+        <SelectParameters>
             <asp:Parameter DefaultValue="" Name="UserId" />
         </SelectParameters>
     </asp:SqlDataSource>

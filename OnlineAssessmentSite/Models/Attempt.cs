@@ -24,7 +24,8 @@ namespace OnlineAssessmentSite.Models
         public int assessmentID { get; set; }
         public System.Guid UserId { get; set; }
         public Nullable<int> attemptScore { get; set; }
-        public System.DateTime attemptDateTime { get; set; }
+        public Nullable<System.DateTime> attemptStartTime { get; set; }
+        public Nullable<System.DateTime> attemptEndTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }

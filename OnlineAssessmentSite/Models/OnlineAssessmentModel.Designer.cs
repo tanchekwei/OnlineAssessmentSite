@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\TARUC\Sem 2\BAIT2113 Web Application Development\OnlineAssessmentSite\OnlineAssessmentSite\Models\OnlineAssessmentSite.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\TARUC\Sem 2\BAIT2113 Web Application Development\OnlineAssessmentSite\OnlineAssessmentSite\Models\OnlineAssessmentModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

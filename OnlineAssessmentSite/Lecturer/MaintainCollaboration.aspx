@@ -15,7 +15,8 @@
             <td style="vertical-align:top;" colspan="2">
                 <asp:GridView ID="gvCollaborators" runat="server" DataSourceID="dataSrcCollaborator" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                     <Columns>
-                        <asp:BoundField DataField="Column1" HeaderText="Collaborators' Full Name [Username]" ReadOnly="True" SortExpression="Column1" />
+                        <asp:BoundField DataField="Name" HeaderText="Full Name" SortExpression="Name" />
+                        <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
                     </Columns>
                     <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
                     <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
@@ -27,7 +28,7 @@
                     <SortedDescendingCellStyle BackColor="#D6DFDF" />
                     <SortedDescendingHeaderStyle BackColor="#002876" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="dataSrcCollaborator" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CONCAT(P.Name, ' [', U.UserName, ']')
+                <asp:SqlDataSource ID="dataSrcCollaborator" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT P.Name, U.UserName
 FROM [aspnet_Users] U, [Collaborations] C, [UserProfiles] P
 WHERE C.assessmentID = @assessmentID
 AND C.UserId = U.UserId

@@ -28,6 +28,8 @@
             border: 2px solid #4CAF50;
         }
 
+        .button2 {background-color: #f44336;}
+
             .button1:hover {
                 background-color: #4CAF50;
                 color: white;
@@ -82,5 +84,9 @@
             document.getElementById("ContentPlaceHolder1_page1").click();
         };
     </script>
+
+    <asp:Button ID="btnQuit" runat="server" Text="Quit" 
+        CssClass="button button2"  OnClick="btnQuit_Click" 
+        OnClientClick="alert('Are you sure want to quit the assessment?\nYour answer will be recorded.')"/>
 
 </asp:Content>

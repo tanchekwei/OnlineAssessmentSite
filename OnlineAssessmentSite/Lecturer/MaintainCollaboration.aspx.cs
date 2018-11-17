@@ -113,6 +113,11 @@ namespace OnlineAssessmentSite.Lecturer
                 lblErrorMsg.Text = "User doesn't existed.";
                 return;
             }
+
+            gvCollaborators.DataBind();
         }
+
+
+        
     }
 }

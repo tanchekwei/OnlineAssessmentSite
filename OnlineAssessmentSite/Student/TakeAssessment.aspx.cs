@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -12,38 +13,55 @@ namespace OnlineAssessmentSite.Student
     public partial class TakeAssessment : System.Web.UI.Page
     {
         Models.Assessment assessment;
+        Models.Attempt attempt = new Models.Attempt();
         Guid guid;
+        OnlineAssessmentSite.Models.OnlineAssessmentSiteEntities _db
+            = new OnlineAssessmentSite.Models.OnlineAssessmentSiteEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // TODO: Add timer, assessmentDuration
 
 
-            //int assessmentID = int.Parse(Request.QueryString["assessmentid"]);
-            int assessmentID = 1011;
+            // TODO: create qusetion and test, set assessment ID
 
-
-            //Response.Write("<script language=javascript>alert('" + assessmentID + "');</script>");
-            OnlineAssessmentSite.Models.OnlineAssessmentSiteEntities _db
-                = new OnlineAssessmentSite.Models.OnlineAssessmentSiteEntities();
-            assessment = _db.Assessments.Where(a => a.assessmentID == assessmentID).Single();
-            if (assessment.assessmentType == "MCQ")
+            if (!IsPostBack)
             {
-                displayMCQQuestion(assessment);
+                int assessmentID = int.Parse(Request.QueryString["assessmentid"]);
+                //int assessmentID = 1008;
+
+
+                //Response.Write("<script language=javascript>alert('" + assessmentID + "');</script>");
+                assessment = _db.Assessments.Where(a => a.assessmentID == assessmentID).Single();
+                if (assessment.assessmentType == "MCQ")
+                {
+                    displayMCQQuestion(assessment);
+                }
+                else
+                {
+                    displayTextQuestion(assessment);
+                }
+
+                MembershipUser user = Membership.GetUser(User.Identity.Name);
+                guid = (Guid)user.ProviderUserKey;
+
+                Models.Attempt attemptLocal = new Models.Attempt();
+                attemptLocal.UserId = guid;
+                attemptLocal.assessmentID = assessment.assessmentID;
+                attemptLocal.attemptStartTime = DateTime.Now;
+
+
+                _db.Attempts.Add(attemptLocal);
+                _db.SaveChanges();
+
+                //Debug.WriteLine("Before: " + attemptLocal.attemptID);
+
+                HttpCookie httpCookie = new HttpCookie("takeAssessment");
+                httpCookie["attemptID"] = attemptLocal.attemptID.ToString();
+                httpCookie["assessmentID"] = assessment.assessmentID.ToString();
+                httpCookie.Expires = DateTime.Now.AddHours(6); // cookie expired in 6 hours
+                Response.Cookies.Add(httpCookie);
             }
-            else
-            {
-                displayTextQuestion(assessment);
-            }
-
-            MembershipUser user = Membership.GetUser(User.Identity.Name);
-            guid = (Guid)user.ProviderUserKey;
-
-
-            Models.Attempt attempt = new Models.Attempt();
-            attempt.UserId = guid;
-            attempt.assessmentID = assessment.assessmentID;
-            // TODO: start and end
-
         }
 
         protected void displayTextQuestion(Models.Assessment assessment)
@@ -153,9 +171,17 @@ namespace OnlineAssessmentSite.Student
                 textBox.TextMode = TextBoxMode.MultiLine;
                 textBox.Width = Unit.Pixel(500);
                 textBox.Height = Unit.Pixel(100);
-
+                textBox.ID = "ansQ" + (i + 1);
 
                 NewCell32.Controls.Add(textBox);
+
+                // hidden field for adding answer to database
+                NewCell32.Controls.Add(new HiddenField()
+                {
+                    ID = "q" + (i + 1) + "Id",
+                    Value = questions[i].questionID.ToString()
+                });
+
                 NewRow3.Cells.Add(NewCell31);
                 NewRow3.Cells.Add(NewCell32);
                 table.Rows.Add(NewRow3);
@@ -275,11 +301,23 @@ namespace OnlineAssessmentSite.Student
                         Text = "Question " + (i + 1) + ": "
                     });
 
-                NewCell12.Controls.Add(
-                    new Label
-                    {
-                        Text = questions[i].questionName + " (" + questions[i].questionMark + " marks)"
-                    });
+                if (questions[i].questionMark == 1)
+                {
+                    NewCell12.Controls.Add(
+                        new Label
+                        {
+                            Text = questions[i].questionName + " (" + questions[i].questionMark + " mark)"
+                        });
+                }
+                else
+                {
+                    NewCell12.Controls.Add(
+                        new Label
+                        {
+                            Text = questions[i].questionName + " (" + questions[i].questionMark + " marks)"
+                        });
+                }
+
 
                 NewRow1.Cells.Add(NewCell11);
                 NewRow1.Cells.Add(NewCell12);
@@ -316,7 +354,7 @@ namespace OnlineAssessmentSite.Student
                     //button.GroupName = "q" + (i + 1);
                     //button.AutoPostBack = false;
 
-                    radioButtonList.Items.Add(new ListItem(choice[c], value.ToString()));
+                    radioButtonList.Items.Add(new ListItem(value + ". " + choice[c], value.ToString()));
 
                     value = (char)((int)value + 1);
                 }
@@ -394,57 +432,149 @@ namespace OnlineAssessmentSite.Student
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            OnlineAssessmentSite.Models.OnlineAssessmentSiteEntities _db
-                = new OnlineAssessmentSite.Models.OnlineAssessmentSiteEntities();
-            int noOfQuestion = _db.Questions.Where(q => q.assessmentID == assessment.assessmentID).Count();
+            MembershipUser user = Membership.GetUser(User.Identity.Name);
+            guid = (Guid)user.ProviderUserKey;
 
+
+            var cookie = Request.Cookies["takeAssessment"];
+            int attemptID = int.Parse(cookie["attemptID"]);
+            int assessmentID = int.Parse(cookie["assessmentID"]);
+
+            //// Destroy cookie
+            //Request.Cookies["takeAssessment"].Expires = DateTime.Now.AddDays(-1);
+
+            var attempt = _db.Attempts.Where(a => a.attemptID == attemptID).Single();
+            attempt.attemptEndTime = DateTime.Now;
+
+            // Find attempt
+            // Save submitted time
+            //Debug.WriteLine("After: " + attemptID);
+
+            //Debug.WriteLine(attempt.attemptID);
+
+            var assessment = _db.Assessments.Where(a => a.assessmentID == assessmentID).Single();
+            int noOfQuestion = _db.Questions.Where(q => q.assessmentID == assessmentID).Count();
 
             //// UserId
             //MembershipUser user = Membership.GetUser(User.Identity.Name);
             //Guid guid = (Guid)user.ProviderUserKey;
-
-
 
             //string selectedKey2 = Request.Form["ctl00$ContentPlaceHolder1$q1Id"];
 
             //// radio button list
             //string selectedKey3 = Request.Form["ctl00$ContentPlaceHolder1$ansQ1"];
 
-
-
             //Response.Write("<script language=javascript>alert('" + selectedKey3 + "');</script>");
 
 
-
+            int totalMark = 0;
+            int score = 0;
+            int noQuestionCorrect = 0;
+            int questionNo = 1;
             if (assessment.assessmentType == "MCQ")
             {
-                int questionNo = 1;
+
                 // try to obtain questionID
                 for (var i = 0; i < noOfQuestion; i++)
                 {
-
+                    // Inserting answer into database
                     Models.Answer answer = new Models.Answer();
-
                     // Question ID (format = ctl00$ContentPlaceHolder1$q1Id)
                     string strQuestionID = Request.Form["ctl00$ContentPlaceHolder1$q" + questionNo + "Id"];
                     answer.questionID = int.Parse(strQuestionID);
-
                     // User ID
                     answer.UserId = guid;
-
                     // Answer (format = ctl00$ContentPlaceHolder1$ansQ1)
                     answer.answer1 = Request.Form["ctl00$ContentPlaceHolder1$ansQ" + questionNo];
-
                     // Attempt ID
+                    answer.attemptID = attempt.attemptID;
+                    //Debug.WriteLine(attempt.attemptID);
+                    _db.Answers.Add(answer);
+                    _db.SaveChanges();
+
+                    // Calculating score
+                    // Get this question answer and mark
+                    var question = _db.Questions.FirstOrDefault(q => q.questionID == answer.questionID);
+
+                    // Compare result and award mark
+                    if (answer.answer1 != null)
+                    {
+                        if (answer.answer1.ToLower() == question.questionAnswer.ToLower())
+                        {
+                            score += question.questionMark.Value;
+                            noQuestionCorrect += 1;
+
+                            // Update mark in Answer question
+                            answer.mark = 1;
+                        }
+                        else
+                        {
+                            answer.mark = 0;
+                        }
+                    }
+                    // calculate total mark in assessment
+                    totalMark += question.questionMark.Value;
+
 
                     questionNo++;
                 }
 
+                // Save to attempt
+                attempt.attemptScore = score;
+                //TryUpdateModel(attempt);
+
+                //_db.Entry(_db.Attempts).CurrentValues.SetValues(attempt);
+
+                _db.SaveChanges();
+                //Response.Write("<script language=javascript>alert('" + score + "/" + totalMark + "/" + attempt.attemptID + "');</script>");
+
+                // Set cookie
+                //HttpCookie httpCookie = new HttpCookie("viewResult");
+                //httpCookie["score"] = score.ToString();
+                //httpCookie["totalMark"] = totalMark.ToString();
+                //httpCookie["assessmentType"] = assessment.assessmentType;
+                //httpCookie["assessmentID"] = assessmentID.ToString();
+                //httpCookie["attemptID"] = attemptID.ToString();
+                //Response.Cookies.Add(httpCookie);
+
+                cookie["noQuestionCorrect"] = noQuestionCorrect.ToString();
+
             }
             else
             {
+                for (var i = 0; i < noOfQuestion; i++)
+                {
+                    // Inserting answer into database
+                    Models.Answer answer = new Models.Answer();
+                    // Question ID (format = ctl00$ContentPlaceHolder1$q1Id)
+                    string strQuestionID = Request.Form["ctl00$ContentPlaceHolder1$q" + questionNo + "Id"];
+                    answer.questionID = int.Parse(strQuestionID);
+                    // User ID
+                    answer.UserId = guid;
+                    // Answer (format = ctl00$ContentPlaceHolder1$ansQ1)
+                    answer.answer1 = Request.Form["ctl00$ContentPlaceHolder1$ansQ" + questionNo];
+                    // Attempt ID
+                    answer.attemptID = attempt.attemptID;
+                    //Debug.WriteLine(attempt.attemptID);
+                    _db.Answers.Add(answer);
+                    _db.SaveChanges();
+                    questionNo++;
+                }
 
+
+
+
+
+
+                Response.Redirect("ViewResult.aspx");
             }
+        }
+
+        protected void btnQuit_Click(object sender, EventArgs e)
+        {
+            var cookie = Request.Cookies["takeAssessment"];
+            cookie["Quitted"] = "true";
+            btnSubmit_Click(sender, e);
         }
     }
 }

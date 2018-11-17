@@ -91,15 +91,15 @@
     <Content Include="Lecturer\MaintainPermission.aspx" />
     <Content Include="Lecturer\MaintainQuestion.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Models\OnlineAssessmentSite.Context.tt">
+    <Content Include="Models\OnlineAssessmentModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
-      <LastGenOutput>OnlineAssessmentSite.Context.cs</LastGenOutput>
+      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
+      <LastGenOutput>OnlineAssessmentModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\OnlineAssessmentSite.tt">
+    <Content Include="Models\OnlineAssessmentModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
-      <LastGenOutput>OnlineAssessmentSite.cs</LastGenOutput>
+      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
+      <LastGenOutput>OnlineAssessmentModel.cs</LastGenOutput>
     </Content>
     <Content Include="Register.aspx" />
     <Content Include="Student\JoinClass.aspx" />
@@ -210,67 +210,67 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Answer.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Applications.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Membership.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Paths.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_PersonalizationAllUsers.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_PersonalizationPerUser.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Profile.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Roles.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_SchemaVersions.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Users.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_WebEvent_Events.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Assessment.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Attempt.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OnlineAssessmentSite.Context.cs">
+    <Compile Include="Models\OnlineAssessmentModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineAssessmentSite.Context.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OnlineAssessmentSite.cs">
+    <Compile Include="Models\OnlineAssessmentModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OnlineAssessmentSite.Designer.cs">
+    <Compile Include="Models\OnlineAssessmentModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserProfile.cs">
-      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -318,12 +318,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
-    <EntityDeploy Include="Models\OnlineAssessmentSite.edmx">
+    <EntityDeploy Include="Models\OnlineAssessmentModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OnlineAssessmentSite.Designer.cs</LastGenOutput>
+      <LastGenOutput>OnlineAssessmentModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\OnlineAssessmentSite.edmx.diagram">
-      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
+    <Content Include="Models\OnlineAssessmentModel.edmx.diagram">
+      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

@@ -169,7 +169,8 @@
           <Property Name="assessmentID" Type="int" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="attemptScore" Type="int" />
-          <Property Name="attemptDateTime" Type="datetime" Nullable="false" />
+          <Property Name="attemptStartTime" Type="datetime" />
+          <Property Name="attemptEndTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Classes">
           <Key>
@@ -825,7 +826,8 @@
           <Property Name="assessmentID" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="attemptScore" Type="Int32" />
-          <Property Name="attemptDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="attemptStartTime" Type="DateTime" Precision="3" />
+          <Property Name="attemptEndTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Answers" Relationship="Self.FK_Answers_Attempts" FromRole="Attempts" ToRole="Answers" />
           <NavigationProperty Name="aspnet_Users" Relationship="Self.FK_Attempts_aspnet_Users" FromRole="Attempts" ToRole="aspnet_Users" />
           <NavigationProperty Name="Assessment" Relationship="Self.FK_Attempts_Assessments" FromRole="Attempts" ToRole="Assessments" />
@@ -1343,7 +1345,8 @@
                 <ScalarProperty Name="assessmentID" ColumnName="assessmentID" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="attemptScore" ColumnName="attemptScore" />
-                <ScalarProperty Name="attemptDateTime" ColumnName="attemptDateTime" />
+                <ScalarProperty Name="attemptStartTime" ColumnName="attemptStartTime" />
+                <ScalarProperty Name="attemptEndTime" ColumnName="attemptEndTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
