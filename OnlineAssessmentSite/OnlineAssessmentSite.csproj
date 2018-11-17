@@ -102,6 +102,7 @@
     </Content>
     <Content Include="Register.aspx" />
     <Content Include="Student\JoinClass.aspx" />
+    <Content Include="Student\TakeAssessment.aspx" />
     <Content Include="Student\ViewAssessment.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -283,6 +284,13 @@
     </Compile>
     <Compile Include="Student\JoinClass.aspx.designer.cs">
       <DependentUpon>JoinClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\TakeAssessment.aspx.cs">
+      <DependentUpon>TakeAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\TakeAssessment.aspx.designer.cs">
+      <DependentUpon>TakeAssessment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\ViewAssessment.aspx.cs">
       <DependentUpon>ViewAssessment.aspx</DependentUpon>

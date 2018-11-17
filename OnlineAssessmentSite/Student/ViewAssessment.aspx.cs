@@ -66,9 +66,11 @@ namespace OnlineAssessmentSite.Student
         {
             if(e.CommandName == "Take")
             {
-                String assessmentID = e.CommandArgument.ToString();
-                Response.Write("<script language=javascript>alert('Assessment ID: [" + assessmentID + "]');</script>");
+                string assessmentID = e.CommandArgument.ToString();
+                //Response.Write("<script language=javascript>alert('Assessment ID: [" + assessmentID + "]');</script>");
 
+                string url = "TakeAssessment.aspx?assessmentID=" + assessmentID;
+                Response.Redirect(url);
             }
         }
 
@@ -77,7 +79,10 @@ namespace OnlineAssessmentSite.Student
             if(e.CommandName == "Take")
             {
                 String assessmentID = e.CommandArgument.ToString();
-                Response.Write("<script language=javascript>alert('Assessment ID: [" + assessmentID + "]');</script>");
+                //Response.Write("<script language=javascript>alert('Assessment ID: [" + assessmentID + "]');</script>");
+
+                string url = "TakeAssessment.aspx?assessmentID=" + assessmentID;
+                Response.Redirect(url);
             }
 
         }

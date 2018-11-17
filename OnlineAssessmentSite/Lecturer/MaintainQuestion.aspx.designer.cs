@@ -76,13 +76,22 @@ namespace OnlineAssessmentSite.Lecturer {
         protected global::System.Web.UI.WebControls.Label lblADates;
         
         /// <summary>
-        /// UploadWarning control.
+        /// cbInsertPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UploadWarning;
+        protected global::System.Web.UI.WebControls.CheckBox cbInsertPanel;
+        
+        /// <summary>
+        /// cbRUDPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbRUDPanel;
         
         /// <summary>
         /// panelInsert control.
@@ -92,6 +101,33 @@ namespace OnlineAssessmentSite.Lecturer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panelInsert;
+        
+        /// <summary>
+        /// lblSuccessInsert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccessInsert;
+        
+        /// <summary>
+        /// lblUploadWarning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUploadWarning;
+        
+        /// <summary>
+        /// lblInsertErrorMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInsertErrorMsg;
         
         /// <summary>
         /// fvInsertQuestion control.
@@ -112,13 +148,22 @@ namespace OnlineAssessmentSite.Lecturer {
         protected global::System.Web.UI.WebControls.SqlDataSource dataSrcQuestion;
         
         /// <summary>
-        /// fvDelUpdQuestion control.
+        /// panelRUD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView fvDelUpdQuestion;
+        protected global::System.Web.UI.WebControls.Panel panelRUD;
+        
+        /// <summary>
+        /// dvRUD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DetailsView dvRUD;
         
         /// <summary>
         /// dataSrcQuestion2 control.
