@@ -4,7 +4,7 @@
         <asp:Label ID="lblAssessmentName" runat="server"></asp:Label>
     </h3>
     <h4>
-        Student Name: <asp:Label ID="Label1" runat="server"></asp:Label>
+        Student Name: <asp:Label ID="lblStudName" runat="server"></asp:Label>
     </h4>
-    
+    <asp:PlaceHolder ID="plh" runat="server"></asp:PlaceHolder>
 </asp:Content>
