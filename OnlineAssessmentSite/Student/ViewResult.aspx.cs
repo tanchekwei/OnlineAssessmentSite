@@ -21,11 +21,9 @@ namespace OnlineAssessmentSite.Student
             var attempt = _db.Attempts.Where(a => a.attemptID == attemptID).Single();
             var assessment = _db.Assessments.Where(a => a.assessmentID == assessmentID).Single();
 
-            Boolean quitted = false;
-
             if (cookie["Quitted"] != null)
             {
-                quitted = Boolean.Parse(cookie["Quitted"]);
+                lblMsg3.Text = "Status: Quitted.";
             }
 
             // Can finally destroy this cookie
@@ -34,16 +32,17 @@ namespace OnlineAssessmentSite.Student
             if (assessment.assessmentType == "MCQ")
             {
                 int noQuestionCorrect = int.Parse(cookie["noQuestionCorrect"]);
-
+                int noQuestion = int.Parse(cookie["noQuestion"]);
                 //double percentage = attempt.attemptScore / //total score * 100
-
-                lblMessage.Text = "Your Score is:<br />";
-
+                // TODO: save total score of assessment in takeassessment calculate percentage.
+                lblMsg1.Text = "Your Score is:<br />";
+                lblMsg2.Text = "You corrected " + noQuestionCorrect + " out of " + noQuestion + " questions.<br />";
             }
             else
             {
-
+                lblMsg1.Text = "Your result will appear after assessed by your lecturer.";
             }
+            lblMsg2.Text += "Thank you for taking " + assessment.assessmentName + "!";
 
             //Response.Write("<script language=javascript>alert('" + attemptID + "/" + assessmentID + "');</script>");
 

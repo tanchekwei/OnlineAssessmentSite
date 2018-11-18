@@ -66,11 +66,18 @@ namespace OnlineAssessmentSite.Student
         {
             if(e.CommandName == "Take")
             {
-                string assessmentID = e.CommandArgument.ToString();
+                String[] args = e.CommandArgument.ToString().Split(',');
                 //Response.Write("<script language=javascript>alert('Assessment ID: [" + assessmentID + "]');</script>");
 
-                string url = "TakeAssessment.aspx?assessmentID=" + assessmentID;
-                Response.Redirect(url);
+                if (int.Parse(args[1]) > 0)
+                {
+                    string url = "TakeAssessment.aspx?assessmentID=" + args[0];
+                    Response.Redirect(url);
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('Sorry, you have no more attempt left.');</script>");
+                }
             }
         }
 
@@ -78,11 +85,17 @@ namespace OnlineAssessmentSite.Student
         {
             if(e.CommandName == "Take")
             {
-                String assessmentID = e.CommandArgument.ToString();
+                String[] args = e.CommandArgument.ToString().Split(',');
                 //Response.Write("<script language=javascript>alert('Assessment ID: [" + assessmentID + "]');</script>");
 
-                string url = "TakeAssessment.aspx?assessmentID=" + assessmentID;
-                Response.Redirect(url);
+                if(int.Parse(args[1]) > 0)
+                {
+                    string url = "TakeAssessment.aspx?assessmentID=" + args[0];
+                    Response.Redirect(url);
+                } else
+                {
+                    Response.Write("<script language=javascript>alert('Sorry, you have no more attempt left.');</script>");
+                }
             }
 
         }

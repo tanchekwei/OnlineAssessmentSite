@@ -102,6 +102,7 @@
       <LastGenOutput>OnlineAssessmentModel.cs</LastGenOutput>
     </Content>
     <Content Include="Register.aspx" />
+    <Content Include="Student\AllAssessmentResult.aspx" />
     <Content Include="Student\JoinClass.aspx" />
     <Content Include="Student\TakeAssessment.aspx" />
     <Content Include="Student\ViewAssessment.aspx" />
@@ -286,6 +287,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Student\AllAssessmentResult.aspx.cs">
+      <DependentUpon>AllAssessmentResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\AllAssessmentResult.aspx.designer.cs">
+      <DependentUpon>AllAssessmentResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\JoinClass.aspx.cs">
       <DependentUpon>JoinClass.aspx</DependentUpon>

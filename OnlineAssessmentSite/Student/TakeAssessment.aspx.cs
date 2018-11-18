@@ -538,7 +538,7 @@ namespace OnlineAssessmentSite.Student
                 //Response.Cookies.Add(httpCookie);
 
                 cookie["noQuestionCorrect"] = noQuestionCorrect.ToString();
-
+                cookie["noQuestion"] = noOfQuestion.ToString();
             }
             else
             {

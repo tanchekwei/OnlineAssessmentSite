@@ -13,12 +13,30 @@ namespace OnlineAssessmentSite.Student {
     public partial class ViewResult {
         
         /// <summary>
-        /// lblMessage control.
+        /// lblMsg1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.Label lblMsg1;
+        
+        /// <summary>
+        /// lblMsg2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg2;
+        
+        /// <summary>
+        /// lblMsg3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg3;
     }
 }
