@@ -11,6 +11,7 @@
       <siteMapNode url="~/Lecturer/MaintainAssessment.aspx" title="Maintain Assessment"  description="Maintain Assessment" />
       <siteMapNode url="~/Lecturer/CreateNewClass.aspx" title="Create New Class"  description="Create New Class" />
       <siteMapNode url="~/Lecturer/MaintainClass.aspx" title="Maintain Class"  description="Maintain Class" />
+      <siteMapNode url="~/Lecturer/ViewSubmittedAssessment.aspx" title="View Submitted Assessment"  description="Mark Assessment" />
     </siteMapNode>
     
     <siteMapNode title="Student" description="Student" roles="*">

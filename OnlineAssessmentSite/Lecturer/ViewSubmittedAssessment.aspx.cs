@@ -11,7 +11,13 @@ namespace OnlineAssessmentSite.Lecturer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+            }
+        }
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblAssessmentName.Text = DropDownList1.SelectedItem.ToString();
         }
     }
 }
