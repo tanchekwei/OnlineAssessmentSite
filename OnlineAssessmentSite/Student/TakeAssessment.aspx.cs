@@ -23,8 +23,6 @@ namespace OnlineAssessmentSite.Student
             // TODO: Add timer, assessmentDuration
 
 
-            // TODO: create qusetion and test, set assessment ID
-
             if (!IsPostBack)
             {
                 int assessmentID = int.Parse(Request.QueryString["assessmentid"]);
@@ -194,19 +192,19 @@ namespace OnlineAssessmentSite.Student
             }
 
 
-            Button btnSubmit = new Button();
-            btnSubmit.ID = "btnSubmit";
-            btnSubmit.OnClientClick = "";
-            btnSubmit.Text = "Submit";
-            btnSubmit.Attributes["class"] = "button button1";
-            btnSubmit.Click += new EventHandler(btnSubmit_Click);
+            //Button btnSubmit = new Button();
+            //btnSubmit.ID = "btnSubmit";
+            //btnSubmit.OnClientClick = "";
+            //btnSubmit.Text = "Submit";
+            //btnSubmit.Attributes["class"] = "button button1";
+            //btnSubmit.Click += new EventHandler(btnSubmit_Click);
 
-            HtmlGenericControl wrapperDiv = new HtmlGenericControl("div");
-            wrapperDiv.Attributes["class"] = "container";
+            //HtmlGenericControl wrapperDiv = new HtmlGenericControl("div");
+            //wrapperDiv.Attributes["class"] = "container";
 
-            wrapperDiv.Controls.Add(btnSubmit);
-            myDiv.Controls.Add(wrapperDiv);
-            plh.Controls.Add(myDiv);
+            //wrapperDiv.Controls.Add(btnSubmit);
+            //myDiv.Controls.Add(wrapperDiv);
+            //plh.Controls.Add(myDiv);
 
 
             //PlaceHolder holder = new PlaceHolder();
@@ -224,7 +222,7 @@ namespace OnlineAssessmentSite.Student
             //    Text = "Your answer: "
             //};
 
-            plh.Controls.Add(myDiv);
+            //plh.Controls.Add(myDiv);
 
             // generate button for pages
             pageCounter = 1;
@@ -268,12 +266,8 @@ namespace OnlineAssessmentSite.Student
 
             for (var i = 0; i < questions.Count(); i++)
             {
-                if (assessment.assessmentType == "MCQ")
-                {
 
-                }
-
-                if (i % 10 == 0 && i != 0) // every 5 questions seperate to different div
+                if (i % 10 == 0 && i != 0) // every 10 questions seperate to different div
                 {
                     plh.Controls.Add(myDiv);
                     pageCounter++;
@@ -377,20 +371,19 @@ namespace OnlineAssessmentSite.Student
                 plh.Controls.Add(myDiv);
             }
 
-            Button btnSubmit = new Button();
-            btnSubmit.ID = "btnSubmit";
-            btnSubmit.OnClientClick = "";
-            btnSubmit.Text = "Submit";
-            btnSubmit.Attributes["class"] = "button button1";
-            btnSubmit.Click += new EventHandler(btnSubmit_Click);
+            //Button btnSubmit = new Button();
+            //btnSubmit.ID = "btnSubmit";
+            //btnSubmit.OnClientClick = "";
+            //btnSubmit.Text = "Submit";
+            //btnSubmit.Attributes["class"] = "button button1";
+            //btnSubmit.Click += new EventHandler(btnSubmit_Click);
 
+            //HtmlGenericControl wrapperDiv = new HtmlGenericControl("div");
+            //wrapperDiv.Attributes["class"] = "container";
 
-            HtmlGenericControl wrapperDiv = new HtmlGenericControl("div");
-            wrapperDiv.Attributes["class"] = "container";
-
-            wrapperDiv.Controls.Add(btnSubmit);
-            myDiv.Controls.Add(wrapperDiv);
-            plh.Controls.Add(myDiv);
+            //wrapperDiv.Controls.Add(btnSubmit);
+            //myDiv.Controls.Add(wrapperDiv);
+            //plh.Controls.Add(myDiv);
 
 
             //PlaceHolder holder = new PlaceHolder();
@@ -448,7 +441,7 @@ namespace OnlineAssessmentSite.Student
 
             // Find attempt
             // Save submitted time
-            //Debug.WriteLine("After: " + attemptID);
+            Debug.WriteLine("After: " + attemptID + ", assessmentID: " + assessmentID);
 
             //Debug.WriteLine(attempt.attemptID);
 
@@ -515,7 +508,6 @@ namespace OnlineAssessmentSite.Student
                     // calculate total mark in assessment
                     totalMark += question.questionMark.Value;
 
-
                     questionNo++;
                 }
 
@@ -539,6 +531,9 @@ namespace OnlineAssessmentSite.Student
 
                 cookie["noQuestionCorrect"] = noQuestionCorrect.ToString();
                 cookie["noQuestion"] = noOfQuestion.ToString();
+                Response.SetCookie(cookie);
+                Response.Redirect("ViewResult.aspx");
+
             }
             else
             {
@@ -560,20 +555,15 @@ namespace OnlineAssessmentSite.Student
                     _db.SaveChanges();
                     questionNo++;
                 }
-
-
-
-
-
-
-                Response.Redirect("ViewResult.aspx");
             }
+            Response.Redirect("ViewResult.aspx");
         }
 
         protected void btnQuit_Click(object sender, EventArgs e)
         {
             var cookie = Request.Cookies["takeAssessment"];
             cookie["Quitted"] = "true";
+            Response.SetCookie(cookie);
             btnSubmit_Click(sender, e);
         }
     }

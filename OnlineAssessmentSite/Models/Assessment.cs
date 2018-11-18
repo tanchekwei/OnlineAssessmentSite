@@ -31,6 +31,7 @@ namespace OnlineAssessmentSite.Models
         public Nullable<System.DateTime> assessmentStartDate { get; set; }
         public Nullable<System.DateTime> assessmentEndDate { get; set; }
         public int assessmentAttempt { get; set; }
+        public Nullable<int> assessmentTotalMark { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attempt> Attempts { get; set; }

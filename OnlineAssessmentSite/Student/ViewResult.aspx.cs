@@ -31,12 +31,15 @@ namespace OnlineAssessmentSite.Student
 
             if (assessment.assessmentType == "MCQ")
             {
-                int noQuestionCorrect = int.Parse(cookie["noQuestionCorrect"]);
-                int noQuestion = int.Parse(cookie["noQuestion"]);
-                //double percentage = attempt.attemptScore / //total score * 100
-                // TODO: save total score of assessment in takeassessment calculate percentage.
-                lblMsg1.Text = "Your Score is:<br />";
-                lblMsg2.Text = "You corrected " + noQuestionCorrect + " out of " + noQuestion + " questions.<br />";
+                int noQuestionCorrect = Convert.ToInt32(cookie["noQuestionCorrect"]);
+                int noQuestion = Convert.ToInt32(cookie["noQuestion"]);
+
+                double score = (double)Convert.ToInt32(attempt.attemptScore);
+                double total = (double)Convert.ToInt32(assessment.assessmentTotalMark);
+
+                double percentage = score / total * 100;
+                lblMsg1.Text = "Your Score is: " + percentage.ToString("0.00") + "%";
+                lblMsg2.Text = "You corrected " + noQuestionCorrect + " out of " + noQuestion + " questions.<br /><br />";
             }
             else
             {

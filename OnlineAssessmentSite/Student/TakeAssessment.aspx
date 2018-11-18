@@ -25,7 +25,7 @@
         .button1 {
             background-color: white;
             color: black;
-            border: 2px solid #4CAF50;
+            border: 1px solid #4CAF50;
         }
 
         .button2 {background-color: #f44336;}
@@ -68,6 +68,7 @@
     <br />
     <asp:PlaceHolder runat="server" ID="plh"></asp:PlaceHolder>
     <br />
+    <br />
 
 
     <script type="text/javascript">
@@ -88,5 +89,6 @@
     <asp:Button ID="btnQuit" runat="server" Text="Quit" 
         CssClass="button button2"  OnClick="btnQuit_Click" 
         OnClientClick="alert('Are you sure want to quit the assessment?\nYour answer will be recorded.')"/>
-
+    <div class="wrapper" style="display: inline">
+        <asp:Button ID="Button1" CssClass="button button1" runat="server" Text="Button" OnClick="btnSubmit_Click" /></div>
 </asp:Content>

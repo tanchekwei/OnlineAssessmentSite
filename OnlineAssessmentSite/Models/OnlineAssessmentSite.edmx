@@ -160,6 +160,7 @@
           <Property Name="assessmentStartDate" Type="datetime" />
           <Property Name="assessmentEndDate" Type="datetime" />
           <Property Name="assessmentAttempt" Type="int" Nullable="false" />
+          <Property Name="assessmentTotalMark" Type="int" />
         </EntityType>
         <EntityType Name="Attempts">
           <Key>
@@ -813,6 +814,7 @@
           <Property Name="assessmentStartDate" Type="DateTime" Precision="3" />
           <Property Name="assessmentEndDate" Type="DateTime" Precision="3" />
           <Property Name="assessmentAttempt" Type="Int32" Nullable="false" />
+          <Property Name="assessmentTotalMark" Type="Int32" />
           <NavigationProperty Name="Attempts" Relationship="Self.FK_Attempts_Assessments" FromRole="Assessments" ToRole="Attempts" />
           <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Assessments" FromRole="Assessments" ToRole="Questions" />
           <NavigationProperty Name="aspnet_Users" Relationship="Self.Collaborations" FromRole="Assessments" ToRole="aspnet_Users" />
@@ -1335,6 +1337,7 @@
                 <ScalarProperty Name="assessmentStartDate" ColumnName="assessmentStartDate" />
                 <ScalarProperty Name="assessmentEndDate" ColumnName="assessmentEndDate" />
                 <ScalarProperty Name="assessmentAttempt" ColumnName="assessmentAttempt" />
+                <ScalarProperty Name="assessmentTotalMark" ColumnName="assessmentTotalMark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

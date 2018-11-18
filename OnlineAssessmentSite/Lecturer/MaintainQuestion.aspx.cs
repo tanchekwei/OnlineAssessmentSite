@@ -171,6 +171,16 @@ namespace OnlineAssessmentSite.Lecturer
                 cmd.Parameters.AddWithValue("@questionMark", questionMark);
                 cmd.ExecuteNonQuery();
                 con.Close();
+                
+                con.Open();
+                cmd = new SqlCommand("UPDATE ASSESSMENTS " +
+                    "SET ASSESSMENTTOTALMARK = " +
+                    "(SELECT Isnull(ASSESSMENTTOTALMARK, 0) FROM ASSESSMENTS WHERE ASSESSMENTID = @aID) + @qMark " +
+                    "WHERE ASSESSMENTID = @aID; ", con);
+                cmd.Parameters.AddWithValue("@aID", assessmentID);
+                cmd.Parameters.AddWithValue("@qMark", questionMark);
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
 
             Page.Response.Redirect(Page.Request.Url.ToString(), true);

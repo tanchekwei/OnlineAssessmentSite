@@ -90,16 +90,17 @@
     <Content Include="Lecturer\MaintainCollaboration.aspx" />
     <Content Include="Lecturer\MaintainPermission.aspx" />
     <Content Include="Lecturer\MaintainQuestion.aspx" />
+    <Content Include="Lecturer\MarkAssessment.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Models\OnlineAssessmentModel.Context.tt">
+    <Content Include="Models\OnlineAssessmentSite.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
-      <LastGenOutput>OnlineAssessmentModel.Context.cs</LastGenOutput>
+      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
+      <LastGenOutput>OnlineAssessmentSite.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\OnlineAssessmentModel.tt">
+    <Content Include="Models\OnlineAssessmentSite.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
-      <LastGenOutput>OnlineAssessmentModel.cs</LastGenOutput>
+      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
+      <LastGenOutput>OnlineAssessmentSite.cs</LastGenOutput>
     </Content>
     <Content Include="Register.aspx" />
     <Content Include="Student\AllAssessmentResult.aspx" />
@@ -203,6 +204,13 @@
     <Compile Include="Lecturer\MaintainQuestion.aspx.designer.cs">
       <DependentUpon>MaintainQuestion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Lecturer\MarkAssessment.aspx.cs">
+      <DependentUpon>MarkAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lecturer\MarkAssessment.aspx.designer.cs">
+      <DependentUpon>MarkAssessment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,67 +219,67 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Answer.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Applications.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Membership.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Paths.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_PersonalizationAllUsers.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_PersonalizationPerUser.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Profile.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Roles.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_SchemaVersions.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_Users.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aspnet_WebEvent_Events.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Assessment.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Attempt.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OnlineAssessmentModel.Context.cs">
+    <Compile Include="Models\OnlineAssessmentSite.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineAssessmentModel.Context.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OnlineAssessmentModel.cs">
+    <Compile Include="Models\OnlineAssessmentSite.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OnlineAssessmentModel.Designer.cs">
+    <Compile Include="Models\OnlineAssessmentSite.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserProfile.cs">
-      <DependentUpon>OnlineAssessmentModel.tt</DependentUpon>
+      <DependentUpon>OnlineAssessmentSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -326,12 +334,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
-    <EntityDeploy Include="Models\OnlineAssessmentModel.edmx">
+    <EntityDeploy Include="Models\OnlineAssessmentSite.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OnlineAssessmentModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>OnlineAssessmentSite.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\OnlineAssessmentModel.edmx.diagram">
-      <DependentUpon>OnlineAssessmentModel.edmx</DependentUpon>
+    <Content Include="Models\OnlineAssessmentSite.edmx.diagram">
+      <DependentUpon>OnlineAssessmentSite.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

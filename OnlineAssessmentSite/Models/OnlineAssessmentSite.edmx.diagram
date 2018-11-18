@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a06285fe6f694a6eb517e82f20963bc0" Name="Diagram1">
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Answer" Width="1.5" PointX="15" PointY="21.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+      <Diagram DiagramId="3951bf2228844e4b880f816c59d2d5aa" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Answer" Width="1.5" PointX="15" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Membership" Width="1.5" PointX="6" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Paths" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Paths" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Profile" Width="1.5" PointX="10.5" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Roles" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Roles" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_SchemaVersions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Users" Width="1.5" PointX="8.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_Users" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineAssessmentSiteModel.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Assessment" Width="1.5" PointX="10.5" PointY="23.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Attempt" Width="1.5" PointX="12.75" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Class" Width="1.5" PointX="15.75" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Question" Width="1.5" PointX="12.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Attempt" Width="1.5" PointX="12.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Class" Width="1.5" PointX="15.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineAssessmentSiteModel.Question" Width="1.5" PointX="12.75" PointY="24.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineAssessmentSiteModel.UserProfile" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="OnlineAssessmentSiteModel.FK_Answers_aspnet_Users" ManuallyRouted="false" />
         <AssociationConnector Association="OnlineAssessmentSiteModel.FK_Answers_Attempts" ManuallyRouted="false" />
