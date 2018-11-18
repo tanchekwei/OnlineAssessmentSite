@@ -11,13 +11,30 @@ namespace OnlineAssessmentSite.Lecturer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-            }
         }
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblAssessmentName.Text = DropDownList1.SelectedItem.ToString();
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Mark")
+            {
+                // items in args[]
+                //  [0] = assessmentID
+                //  [1] = attemptID
+                //  [2] = UserId
+
+                HttpCookie httpCookie = new HttpCookie("markAssessment");
+                httpCookie["args"] = e.CommandArgument.ToString();
+                //string[] args = e.CommandArgument.ToString().Split(',');
+                Response.Cookies.Add(httpCookie);
+                Response.Redirect("MarkAssessment.aspx");
+                //Response.Write("<script>alert('" + args[0] + ", " + args[1] + ", " + args[2] + "');</script>");
+
+
+            }
         }
     }
 }

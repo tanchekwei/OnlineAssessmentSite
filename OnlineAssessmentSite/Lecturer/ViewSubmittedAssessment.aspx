@@ -16,7 +16,11 @@
         Assessment Name:
         <asp:DropDownList ID="DropDownList1" runat="server" EnableViewState="true" DataSourceID="SqlDataSource1" DataTextField="assessmentName" DataValueField="assessmentID" Height="22px" Width="400px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [assessmentID], [assessmentName] FROM [Assessments]"></asp:SqlDataSource>
+        &nbsp;*only able to mark written type assessment.<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [assessmentID], [assessmentName] FROM [Assessments] WHERE ([assessmentType] = @assessmentType)">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="WRT" Name="assessmentType" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </p>
     <p>
         List of student completed
@@ -25,7 +29,7 @@
     </p>
     <p>
         <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource2"
-            AutoGenerateColumns="False" Width="800px" CellPadding="10" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" GridLines="Horizontal">
+            AutoGenerateColumns="False" Width="800px" CellPadding="10" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" GridLines="Horizontal" OnRowCommand="GridView1_RowCommand">
             <AlternatingRowStyle BackColor="#F7F7F7" />
             <Columns>
                 <asp:TemplateField HeaderText="No.">
@@ -34,11 +38,13 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name"></asp:BoundField>
-                <asp:BoundField DataField="attemptStartTime" HeaderText="Attempt Start Time" SortExpression="attemptStartTime" DataFormatString="{0:hh:mm tt dd/MM/yyyy}"></asp:BoundField>
+                <asp:BoundField DataField="attemptStartTime" HeaderText="Attempt Start Time" 
+                    SortExpression="attemptStartTime" DataFormatString="{0:hh:mm tt dd/MM/yyyy}">
+                </asp:BoundField>
                 <asp:BoundField DataField="attemptEndTime" HeaderText="Attempt End Time" SortExpression="attemptEndTime" DataFormatString="{0:hh:mm tt dd/MM/yyyy}"></asp:BoundField>
 <%--                <asp:BoundField DataField="TimeTaken" HeaderText="Time Taken<br/>(minutes)" ReadOnly="True" SortExpression="TimeTaken" DataFormatString="{0: minutes}"></asp:BoundField>--%>
 
-                <asp:TemplateField HeaderText="Time Taken<br/>(hh:mm:ss)">
+                <asp:TemplateField HeaderText="Time Taken<br/>(hh:mm:ss)" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <%# String.Format("{0:00}", Eval("HourPart")) %>:
                         <%# String.Format("{0:00}", Eval("MinutePart")) %>:
@@ -47,9 +53,11 @@
                 </asp:TemplateField>
 
 
-                <asp:TemplateField HeaderText="Operation">
+                <asp:TemplateField HeaderText="Operation" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:Button runat="server" Text="Mark" ID="btnMark" CommandName="Mark" CommandArgument='<%# Eval("assessmentID") + "," + Eval("attemptID") + "," + Eval("UserId") %>' />
+                        <asp:Button runat="server" Text="Mark" ID="btnMark" CommandName="Mark" 
+                            CommandArgument='<%# Eval("assessmentID") + "," + 
+                                Eval("attemptID") + "," + Eval("UserId") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

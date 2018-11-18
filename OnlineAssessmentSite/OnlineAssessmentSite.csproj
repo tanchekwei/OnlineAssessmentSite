@@ -90,6 +90,7 @@
     <Content Include="Lecturer\MaintainCollaboration.aspx" />
     <Content Include="Lecturer\MaintainPermission.aspx" />
     <Content Include="Lecturer\MaintainQuestion.aspx" />
+    <Content Include="Lecturer\MarkAssessment.aspx" />
     <Content Include="Lecturer\ViewSubmittedAssessment.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Models\OnlineAssessmentSite.Context.tt">
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="Lecturer\MaintainQuestion.aspx.designer.cs">
       <DependentUpon>MaintainQuestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturer\MarkAssessment.aspx.cs">
+      <DependentUpon>MarkAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lecturer\MarkAssessment.aspx.designer.cs">
+      <DependentUpon>MarkAssessment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Lecturer\ViewSubmittedAssessment.aspx.cs">
       <DependentUpon>ViewSubmittedAssessment.aspx</DependentUpon>
